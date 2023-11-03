@@ -52,6 +52,7 @@ func (plugin *FGDScorePlugin) Score(ctx context.Context, state *framework.CycleS
 	}
 
 	score, _ := calculateGpuShareFragExtendScore(nodeRes, podRes, plugin.typicalPods)
+	fmt.Printf("FGD Score of currect node is: %d\n", int(score))
 	return score, framework.NewStatus(framework.Success)
 }
 

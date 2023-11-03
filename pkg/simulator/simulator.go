@@ -99,7 +99,6 @@ func New(opts ...Option) (Interface, error) {
 		return nil, err
 	}
 	displaySchedulerConfig(kubeSchedulerConfig)
-
 	// create a real/fake client
 	var client externalclientset.Interface
 	if options.kubeconfig != "" {
@@ -154,6 +153,9 @@ func New(opts ...Option) (Interface, error) {
 		},
 		simontype.FGDScorePluginName: func(configuration runtime.Object, handle framework.Handle) (framework.Plugin, error) {
 			return simonplugin.NewFGDScorePlugin(configuration, handle, &sim.typicalPods)
+		},
+		simontype.CustomScorePluginName: func(configuration runtime.Object, handle framework.Handle) (framework.Plugin, error) {
+			return simonplugin.NewCustomScorePlugin(configuration, handle)
 		},
 	}
 	sim.scheduler, err = scheduler.New(

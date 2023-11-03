@@ -26,6 +26,7 @@ SCORE_POLICY_ABBR = {
     "GpuPackingScore":    "GpuPacking",
     "BestFitScore":       "BestFit",
     "FGDScore":           "FGD",
+    "CustomGavel":        "Gavel",
 }
 
 SCORE_PLUGINS_WITH_DIM_NORM_GPU_METHOD = [
